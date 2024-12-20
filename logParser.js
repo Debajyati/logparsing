@@ -1,13 +1,12 @@
 async function parseLogFile(filePath) {
-  const fs = await import("node:fs");
+  const { readLogFile } = await import('./fileOprt.js');
   try {
-    const data = fs.readFileSync(filePath, 'utf-8');
-    const lines = data.split('\n');
+    const lines = readLogFile(filePath);
     const parsedData = [];
 
     const updateIdPattern = /\b[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}\.[0-9]+\b/;
 
-    for (const line of lines) {
+    for await (const line of lines) {
       const parts = line.split(' ');
       // helper function
       const getMessage = (begindex, subStrArray) => {
