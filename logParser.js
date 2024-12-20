@@ -74,6 +74,7 @@ function extractStatus(message) {
   const pendingKeywords = new Set(["queued", "pending"]);
   const cleanupKeywords = new Set(["uninit", "deleting", "purge"]);
 
+  // helper function
   const hasKeyword = (message, keywords) => {
     for (const keyword of keywords) {
       if (message.includes(keyword)) {

@@ -8,12 +8,17 @@ await (async () => {
     const logFilePath = await getPath("WindowsUpdate.log");
     const parsedLogs = await parseLogFile(logFilePath);
 
+    if (parsedLogs.length === 0) {
+      console.error("No output file generated");
+      process.exit(1);
+    }
+
     await writeJSON("parsedLogs.json", parsedLogs);
 
     console.log("Done!");
     console.log("Parsed logs written to parsedLogs.json");
   } catch (err) {
-    console.error(`Error parsing log file: ${err}`);
+    console.error(`Error parsing log file: ${err.message}`);
     process.exit(1);
   }
 })();
