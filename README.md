@@ -1,1 +1,1 @@
-A basic NodeJS project for parsing Windows Update log files
+A basic NodeJS project for parsing my local Windows Update log files
