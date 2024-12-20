@@ -15,6 +15,7 @@ async function writeJSON(filePath, data) {
 await (async () => {
   const logFilePath = await getPath("WindowsUpdate.log");
   const parsedLogs = await parseLogFile(logFilePath);
-  // await writeJSON("parsedLogs.json", parsedLogs);
-  console.log(parsedLogs);
+  await writeJSON("parsedLogs.json", parsedLogs);
+  console.log("Done!");
+  console.log("Parsed logs written to parsedLogs.json");
 })();
