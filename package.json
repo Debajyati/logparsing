@@ -2,12 +2,36 @@
   "name": "logparsing",
   "version": "1.0.0",
   "main": "index.js",
+  "bin": {
+    "logparsing": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Debajyati/logparsing.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "parser",
+    "log",
+    "logparser",
+    "logs",
+    "log-parser",
+    "log-parsing",
+    "logfile-parser",
+    "windows-update-log",
+    "windows-update-logs",
+    "windows-update-log-parser",
+    "WindowsUpdate",
+    "WindowsUpdateLog",
+    "fast",
+    "fast-parser",
+    "fast-log-parser",
+    "JSON output"
+  ],
+  "author": "Debajyati Dey",
   "type": "module",
   "license": "ISC",
-  "description": ""
+  "description": "A parser for parsing Windows Update log files"
 }
