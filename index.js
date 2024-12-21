@@ -1,11 +1,12 @@
+#!/usr/bin/env node
+
 import parseLogFile from './logParser.js';
-// import { argv } from 'process';
 import { getPath, writeJSON } from './fileOprt.js';
 
 // main function
 await (async () => {
   try {
-    const logFilePath = await getPath("WindowsUpdate.log");
+    const logFilePath = (process.argv[2]) ? process.argv.slice(2).join(" ") : (await getPath("WindowsUpdate.log"));
     const parsedLogs = await parseLogFile(logFilePath);
 
     if (parsedLogs.length === 0) {
