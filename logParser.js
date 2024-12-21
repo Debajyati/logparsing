@@ -20,23 +20,23 @@ async function parseLogFile(filePath) {
 
       if (parts.length >= 3) {
         const timestamp = `${parts[0]} ${parts[1]}`;
-        const components = [parts[2].trim()];
-        let process, message;
+        const processID = parts[2].trim();
+        let threadID, componentName, message;
 
         if (!parts[3]) {
-          components.push(parts[4].trim());
+          threadID = parts[4].trim();
         } else {
-          components.push(parts[3].trim());
+          threadID = parts[3].trim();
         }
 
         if (parts[3] && parts[4]) {
-          process = parts[4].trim();
+          componentName = parts[4].trim();
           message = getMessage(5, parts);
         } else if (!parts[5]) {
-          process = parts[6].trim();
+          componentName = parts[6].trim();
           message = getMessage(7,parts);
         } else {
-          process = parts[5].trim();
+          componentName = parts[5].trim();
           message = getMessage(6, parts);
         }
 
@@ -45,8 +45,9 @@ async function parseLogFile(filePath) {
 
         parsedData.push({
           timestamp,
-          components,
-          process,
+          processID,
+          threadID,
+          componentName,
           message,
           updateId,
           status,
