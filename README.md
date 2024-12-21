@@ -3,19 +3,19 @@ A NodeJS based CLI for parsing your local Windows Update log files.
 ## Installation
 
 ```bash
-npm install -g logparsing
+npm install -g winlogparse
 ```
 
 ## Usage
 
 ```bash
-logparsing --help
+winlogparse --help
 ```
 
 ## Example
 
 ```bash
-logparsing path-to-your-log-file.log
+winlogparse path-to-your-log-file.log
 ```
 This will output a JSON file with the parsed data in the current working directory.
 

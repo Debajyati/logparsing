@@ -9,7 +9,7 @@ const require = await (async ()=>{
 })();
 
 const helpText = `
-Usage: logparsing [options] [path-to-your-log-file.log]
+Usage: winlogparse [options] [path-to-your-log-file.log]
 
 A NodeJS based CLI for parsing your local Windows Update log files.
 
@@ -18,8 +18,8 @@ Options:
   -v, --version     Show version number
 
 Examples:
-  logparsing --help                Show help information
-  logparsing path-to-your-log-file.log     Parse the specified log file and output JSON
+  winlogparse --help                Show help information
+  winlogparse path-to-your-log-file.log     Parse the specified log file and output JSON
 
 Description:
   This will output a JSON file with the parsed data in the current working directory.
