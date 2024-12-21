@@ -3,9 +3,45 @@
 import parseLogFile from './logParser.js';
 import { getPath, writeJSON } from './fileOprt.js';
 
+const require = await (async ()=>{
+  const { createRequire } = await import("node:module");
+  return createRequire(import.meta.url);
+})();
+
+const helpText = `
+Usage: logparsing [options] [path-to-your-log-file.log]
+
+A NodeJS based CLI for parsing your local Windows Update log files.
+
+Options:
+  -h, --help        Show help information
+  -v, --version     Show version number
+
+Examples:
+  logparsing --help                Show help information
+  logparsing path-to-your-log-file.log     Parse the specified log file and output JSON
+
+Description:
+  This will output a JSON file with the parsed data in the current working directory.
+
+  If the filepath is omitted, it will default to a sample log file included in the CLI package for your reference.
+
+License:
+  ISC
+`;
+
 // main function
 await (async () => {
   try {
+    if (process.argv[2] === "-h" || process.argv[2] === "--help") {
+      console.log(helpText);
+      process.exit(0);
+    }
+
+    if (process.argv[2] === "-v" || process.argv[2] === "--version") {
+      console.log(require("./package.json").version);
+      process.exit(0);
+    }
     const logFilePath = (process.argv[2]) ? process.argv.slice(2).join(" ") : (await getPath("WindowsUpdate.log"));
     const parsedLogs = await parseLogFile(logFilePath);
 
